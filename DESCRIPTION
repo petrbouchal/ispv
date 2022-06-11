@@ -1,0 +1,21 @@
+Package: ispv
+Title: Use Czech labour market survey data
+Version: 0.0.0.9000
+Authors@R: 
+    person("Petr", "Bouchal", , "pbouchal@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-0471-716X"))
+Description: Retrieve and load data from the Czech Information System on Average Earnings (ISPV) at <https://www.ispv.cz>.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Imports: 
+    cli,
+    httr,
+    purrr (>= 0.3.4),
+    readxl,
+    rvest (>= 1.0.2),
+    tibble
+Depends: 
+    R (>= 2.10)
+LazyData: true

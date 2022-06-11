@@ -1,0 +1,37 @@
+---
+title: "design"
+author: "Petr Bouchal"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Two types of data
+
+- national
+- regional
+
+Two steps in basic workflow
+
+- get links
+- [download data]
+- load data
+
+Workflow for targets
+
+- get links for one year - for branched workflow
+- get links for multiple years
+- load one year's worth of data - for branched workflows
+- load data for multiple years
+
+Naming convention
+
+- prefix: pv_
+- fns:
+  - pv_list_state
+  - pv_list_reg
+  - pv_load_reg
+  - pv_load_state

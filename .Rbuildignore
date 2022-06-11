@@ -1,0 +1,10 @@
+^.*\.Rproj$
+^prep/*
+^\.Rproj\.user$
+^LICENSE\.md$
+^data-raw$
+^codemeta\.json$
+^README\.Rmd$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
