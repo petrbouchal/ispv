@@ -19,5 +19,6 @@ Imports:
 Depends: 
     R (>= 2.10)
 LazyData: true
-URL: https://github.com/petrbouchal/ispv
+URL: https://github.com/petrbouchal/ispv,
+    http://petrbouchal.xyz/ispv/
 BugReports: https://github.com/petrbouchal/ispv/issues

@@ -2,7 +2,7 @@ home:
   title: An R package for reading Czech labour market data from https://ispv.cz
   description: Retrieve and load data from Informační systém o průměrném výdělku (ISPV).
 
-url: ~
+url: http://petrbouchal.xyz/ispv/
 template:
   bootstrap: 5
 
