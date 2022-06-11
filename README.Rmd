@@ -18,6 +18,7 @@ knitr::opts_chunk$set(
 # ispv
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/petrbouchal/ispv/workflows/R-CMD-check/badge.svg)](https://github.com/petrbouchal/ispv/actions)
 <!-- badges: end -->
 
 The goal of ispv is to retrieve and load data from the Czech database of average earnings (ISPV, Informační systém o průměrném výdělku).
