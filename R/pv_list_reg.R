@@ -27,7 +27,8 @@ pv_list_reg <- function(year = NULL, base_url = NULL, user_agent = NULL) {
 
   url <- paste0(base_url, url_suffix)
 
-  links <- purrr::map2_dfr(url, year, pv_list_reg_one)
+  links_list <- purrr::map2(url, year, pv_list_reg_one)
+  links <- do.call(rbind, links_list)
 
   return(links)
 

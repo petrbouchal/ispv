@@ -40,7 +40,7 @@ pv_load_reg <- function(path) {
 
   names(path) <- path
 
-  ispv_all <- purrr::map_dfr(path, function(x) {
+  ispv_all_list <- purrr::map(path, function(x) {
 
     dt <- readxl::read_excel(x, sheet = 4, skip = 11,
                              col_names = c("isco4_full", "fte_thous", "pay_median",
@@ -48,9 +48,12 @@ pv_load_reg <- function(path) {
                                            "pay_mean",
                                            "bonus_perc", "supplements_perc", "compensation_perc",
                                            "hours_per_month"))
+    dt$file <- x
 
     return(dt)
-  }, .id = "file")
+  })
+
+  ispv_all <- do.call(rbind, ispv_all_list)
 
   kraj_id_pattern <- paste(paste0(kraje$kraj_id_ispv, "_"), collapse = "|")
 
