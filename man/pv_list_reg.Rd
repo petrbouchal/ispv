@@ -9,7 +9,7 @@ pv_list_reg(year = NULL, base_url = NULL, user_agent = NULL)
 \arguments{
 \item{year}{Year, defaults to scraping page for latest available data. String or numeric in YYYY format of length >= 1.}
 
-\item{base_url}{base url, defaults to \link{htps://ispv.cz}}
+\item{base_url}{base url, defaults to \url{htps://ispv.cz}}
 
 \item{user_agent}{User agent string, defaults to package URL on Github (https://github.com/petrbouchal/ispv).}
 }

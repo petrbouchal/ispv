@@ -5,7 +5,7 @@
 #' regional data and returns the result in a tibble.
 #'
 #' @param year Year, defaults to scraping page for latest available data. String or numeric in YYYY format of length >= 1.
-#' @param base_url base url, defaults to [htps://ispv.cz]
+#' @param base_url base url, defaults to [htps://ispv.cz](htps://ispv.cz)
 #' @param user_agent User agent string, defaults to package URL on Github (`r user_agent`).
 #'
 #' @return a tibble with file name, URL and year. File name can be used to determine the time period and region.
@@ -52,6 +52,7 @@ pv_list_reg_one <- function(url, year) {
   ispv_links_kraje <- ispv_links_tbl[ispv_links_tbl$krajsky,]
   ispv_links_kraje$year <- year
   ispv_links_kraje$krajsky <- NULL
+  ispv_links_kraje$url <- paste0(url_base, ispv_links_kraje$url)
 
   if(nrow(ispv_links_kraje) < 14) cli::cli_alert_info("No regional files available for year {.field {year}}")
 

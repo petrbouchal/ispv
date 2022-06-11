@@ -8,6 +8,14 @@
 \description{
 Retrieve and load data from the Czech Information System on Average Earnings (ISPV) at <https://www.ispv.cz>.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/petrbouchal/ispv}
+  \item Report bugs at \url{https://github.com/petrbouchal/ispv/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Petr Bouchal \email{pbouchal@gmail.com} (\href{https://orcid.org/0000-0002-0471-716X}{ORCID})
 

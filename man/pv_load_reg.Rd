@@ -4,15 +4,31 @@
 \alias{pv_load_reg}
 \title{Load ISPV Excel files with regional data}
 \format{
-A data frame with 53940 rows and 10 variables:
+The function returns a data frame with 22 variables:
 \describe{
-\item{price}{price, in US dollars}
-\item{carat}{weight of the diamond, in carats}
-...
+\item{\code{kraj_id_ispv}}{character. Internal region code, appears in Excel file name}
+\item{\code{file}}{character. File from which this row was read.}
+\item{\code{isco4_full}}{character. 4-digit ISCO (occupation) code with Czech ISCO category name. CZSO codelist number \href{https://apl.czso.cz/iSMS/cisdet.jsp?kodcis=5708}{5708}}
+\item{\code{fte_thous}}{double. Thousand FTEs in this ISCO-4 category - converted to FTE by months paid.}
+\item{\code{pay_median}}{double. Median monthly pay.}
+\item{\code{pay_d1}}{double. 1st decile monthly pay.}
+\item{\code{pay_q1}}{double. 1st quartile monthly pay.}
+\item{\code{pay_q3}}{double. 3rd quartile monthly pay.}
+\item{\code{pay_d9}}{double. 9th decline monthly pay.}
+\item{\code{pay_mean}}{double. Mean pay.}
+\item{\code{bonus_perc}}{double. Bonuses ("odměny") as share of pay, as decimal}
+\item{\code{supplements_perc}}{double. Supplements ("příplatky") as share of pay, as decimal.}
+\item{\code{compensation_perc}}{double. Compensation ("náhrady") as share of pay, as decimal.}
+\item{\code{hours_per_month}}{double. Monthly hours worked.}
+\item{\code{sfera}}{character. Sphere - salary (\code{pls}) or wage (\code{mzs}), roughly equals public or private sector}
+\item{\code{period}}{character. Time period as appears in file name, e.g. 204 is Q4 of 2020. Regional data only comes in Q4, i.e. for full year.}
+\item{\code{year}}{character. Year, as 4-digit character vector}
+\item{\code{isco4_id}}{character. 4-digit ISCO code.}
+\item{\code{isco4_name}}{character. Czech name of 4-digit ISCO category}
+\item{\code{kraj_id}}{character. non-NUTS ID of kraj (region, NUTS3).}
+\item{\code{kraj_name}}{character. Czech name of kraj (region, NUTS3).}
+\item{\code{kraj_id_nuts3}}{character. NUTS ID of kraj (region, NUTS3)..}
 }
-}
-\source{
-\url{http://www.diamondse.info/}
 }
 \usage{
 pv_load_reg(path)
