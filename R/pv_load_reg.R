@@ -1,24 +1,25 @@
 
-#' Load ISPV Excel files with regional data
+#' Load ISPV Excel files with regional data on monthly earnings by ISCO code
 #'
-#' Loads one or more local Excel files downloaded from ISPV links retrieved by `pv_list_reg()`.
+#' Loads data on monthly earnings by ISCO code from one or more local Excel files downloaded from ISPV links retrieved by `pv_list_reg()`.
 #'
 #' @param path path to one or more Excel files (character vector length one or more).
 #'
 #' @return a tibble, see Format for details.
 #'
-#' @format The function returns a data frame with 22 variables:
+#' @format The function returns a data frame with 22 variables.
+#'     All earnings are monthly gross in CZK.
 #' \describe{
 #'   \item{\code{kraj_id_ispv}}{character. Internal region code, appears in Excel file name}
 #'   \item{\code{file}}{character. File from which this row was read.}
 #'   \item{\code{isco4_full}}{character. 4-digit ISCO (occupation) code with Czech ISCO category name. CZSO codelist number [5708](https://apl.czso.cz/iSMS/cisdet.jsp?kodcis=5708)}
 #'   \item{\code{fte_thous}}{double. Thousand FTEs in this ISCO-4 category - converted to FTE by months paid.}
-#'   \item{\code{pay_median}}{double. Median monthly pay.}
-#'   \item{\code{pay_d1}}{double. 1st decile monthly pay.}
-#'   \item{\code{pay_q1}}{double. 1st quartile monthly pay.}
-#'   \item{\code{pay_q3}}{double. 3rd quartile monthly pay.}
-#'   \item{\code{pay_d9}}{double. 9th decline monthly pay.}
-#'   \item{\code{pay_mean}}{double. Mean pay.}
+#'   \item{\code{pay_median}}{double. Median monthly earnings.}
+#'   \item{\code{pay_d1}}{double. 1st decile monthly earnings.}
+#'   \item{\code{pay_q1}}{double. 1st quartile monthly earnings.}
+#'   \item{\code{pay_q3}}{double. 3rd quartile monthly earnings.}
+#'   \item{\code{pay_d9}}{double. 9th decline monthly earnings.}
+#'   \item{\code{pay_mean}}{double. Mean earnings.}
 #'   \item{\code{bonus_perc}}{double. Bonuses ("odměny") as share of pay, as decimal}
 #'   \item{\code{supplements_perc}}{double. Supplements ("příplatky") as share of pay, as decimal.}
 #'   \item{\code{compensation_perc}}{double. Compensation ("náhrady") as share of pay, as decimal.}
