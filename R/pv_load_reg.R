@@ -36,8 +36,8 @@
 #'
 #' @export
 #' @examples
-#' pv_load_reg(system.file("extdata", "Kar_204_pls.xlsx", package = "ispv"))
-pv_load_reg <- function(path) {
+#' pv_reg_monthlypay_isco4(system.file("extdata", "Kar_204_pls.xlsx", package = "ispv"))
+pv_reg_monthlypay_isco4 <- function(path) {
 
   names(path) <- path
 
