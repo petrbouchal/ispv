@@ -87,40 +87,29 @@
 <span class="va">links</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pv_list_reg.html">pv_list_reg</a></span><span class="op">(</span><span class="fl">2020</span><span class="op">)</span>
 
 <span class="va">paths</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">links</span><span class="op">$</span><span class="va">name</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">15</span>, <span class="fl">16</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>
-<span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html" class="external-link">map2</a></span><span class="op">(</span><span class="va">links</span><span class="op">$</span><span class="va">url</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">15</span>, <span class="fl">16</span><span class="op">)</span><span class="op">]</span>, <span class="va">paths</span>, <span class="fu">curl</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/curl/man/curl_download.html" class="external-link">curl_download</a></span><span class="op">)</span>
-<span class="co">#&gt; [[1]]</span>
-<span class="co">#&gt; [1] "/Users/petr/csandbox/ispv/Pra_204_mzs.xlsx"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[2]]</span>
-<span class="co">#&gt; [1] "/Users/petr/csandbox/ispv/Str_204_mzs.xlsx"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[3]]</span>
-<span class="co">#&gt; [1] "/Users/petr/csandbox/ispv/Pra_204_pls.xlsx"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[4]]</span>
-<span class="co">#&gt; [1] "/Users/petr/csandbox/ispv/Str_204_pls.xlsx"</span>
+<span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html" class="external-link">walk2</a></span><span class="op">(</span><span class="va">links</span><span class="op">$</span><span class="va">url</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">15</span>, <span class="fl">16</span><span class="op">)</span><span class="op">]</span>, <span class="va">paths</span>, <span class="fu">curl</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/curl/man/curl_download.html" class="external-link">curl_download</a></span><span class="op">)</span>
 
-<span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pv_load_reg.html">pv_load_reg</a></span><span class="op">(</span><span class="va">paths</span><span class="op">)</span>
+<span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pv_reg_monthlypay_isco4.html">pv_reg_monthlypay_isco4</a></span><span class="op">(</span><span class="va">paths</span><span class="op">)</span>
 
 <span class="va">data</span>
 <span class="co">#&gt; # A tibble: 545 × 22</span>
-<span class="co">#&gt;    kraj_id_ispv file        isco4_full fte_thous pay_median pay_d1 pay_q1 pay_q3</span>
-<span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 Pra          /Users/pet… 1120 Nejv…     1.25     147534. 39480. 66898. 3.04e5</span>
-<span class="co">#&gt;  2 Pra          /Users/pet… 1211 Řídí…     2.84     100871. 44964. 68750. 1.59e5</span>
-<span class="co">#&gt;  3 Pra          /Users/pet… 1212 Řídí…     0.900    100313. 45651. 64583. 1.66e5</span>
-<span class="co">#&gt;  4 Pra          /Users/pet… 1219 Osta…     1.62      76178. 31050. 49090. 1.31e5</span>
-<span class="co">#&gt;  5 Pra          /Users/pet… 1221 Řídí…     4.88      91330. 38618. 56198. 1.47e5</span>
-<span class="co">#&gt;  6 Pra          /Users/pet… 1223 Řídí…     0.989     99731. 45760. 67100. 1.43e5</span>
-<span class="co">#&gt;  7 Pra          /Users/pet… 1321 Řídí…     1.44      67123. 20246. 44127. 1.12e5</span>
-<span class="co">#&gt;  8 Pra          /Users/pet… 1323 Řídí…     2.07      75469. 31909. 49077. 1.04e5</span>
-<span class="co">#&gt;  9 Pra          /Users/pet… 1324 Řídí…     2.40      72326. 35602. 48826. 1.10e5</span>
-<span class="co">#&gt; 10 Pra          /Users/pet… 1330 Řídí…     2.81     115329. 52052. 73825. 1.62e5</span>
-<span class="co">#&gt; # … with 535 more rows, and 14 more variables: pay_d9 &lt;dbl&gt;, pay_mean &lt;dbl&gt;,</span>
+<span class="co">#&gt;    kraj_id_ispv isco4_full      fte_thous pay_median pay_d1 pay_q1 pay_q3 pay_d9</span>
+<span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;               &lt;dbl&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 Pra          1120 Nejvyšší …     1.25     147534. 39480. 66898. 3.04e5 4.48e5</span>
+<span class="co">#&gt;  2 Pra          1211 Řídící pr…     2.84     100871. 44964. 68750. 1.59e5 2.20e5</span>
+<span class="co">#&gt;  3 Pra          1212 Řídící pr…     0.900    100313. 45651. 64583. 1.66e5 2.37e5</span>
+<span class="co">#&gt;  4 Pra          1219 Ostatní ř…     1.62      76178. 31050. 49090. 1.31e5 1.86e5</span>
+<span class="co">#&gt;  5 Pra          1221 Řídící pr…     4.88      91330. 38618. 56198. 1.47e5 2.35e5</span>
+<span class="co">#&gt;  6 Pra          1223 Řídící pr…     0.989     99731. 45760. 67100. 1.43e5 2.04e5</span>
+<span class="co">#&gt;  7 Pra          1321 Řídící pr…     1.44      67123. 20246. 44127. 1.12e5 1.57e5</span>
+<span class="co">#&gt;  8 Pra          1323 Řídící pr…     2.07      75469. 31909. 49077. 1.04e5 1.38e5</span>
+<span class="co">#&gt;  9 Pra          1324 Řídící pr…     2.40      72326. 35602. 48826. 1.10e5 1.54e5</span>
+<span class="co">#&gt; 10 Pra          1330 Řídící pr…     2.81     115329. 52052. 73825. 1.62e5 2.29e5</span>
+<span class="co">#&gt; # … with 535 more rows, and 14 more variables: pay_mean &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   bonus_perc &lt;dbl&gt;, supplements_perc &lt;dbl&gt;, compensation_perc &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   hours_per_month &lt;dbl&gt;, sfera &lt;chr&gt;, period &lt;chr&gt;, year &lt;chr&gt;,</span>
-<span class="co">#&gt; #   isco4_id &lt;chr&gt;, isco4_name &lt;chr&gt;, kraj_id &lt;chr&gt;, kraj_name &lt;chr&gt;,</span>
-<span class="co">#&gt; #   kraj_id_nuts3 &lt;chr&gt;</span></code></pre></div>
+<span class="co">#&gt; #   hours_per_month &lt;dbl&gt;, file &lt;chr&gt;, sfera &lt;chr&gt;, period &lt;chr&gt;, year &lt;chr&gt;,</span>
+<span class="co">#&gt; #   kraj_id &lt;chr&gt;, kraj_name &lt;chr&gt;, kraj_id_nuts3 &lt;chr&gt;, isco4_id &lt;chr&gt;,</span>
+<span class="co">#&gt; #   isco4_name &lt;chr&gt;</span></code></pre></div>
 <p>This is a long format data frame, so is easy to analyse and visualise:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
