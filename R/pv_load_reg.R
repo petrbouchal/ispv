@@ -44,32 +44,20 @@ pv_reg_monthlypay_isco4 <- function(path) {
   ispv_all_list <- purrr::map(path, function(x) {
 
     dt <- readxl::read_excel(x, sheet = 4, skip = 11,
-                             col_names = c("isco4_full", "fte_thous", "pay_median",
-                                           "pay_d1", "pay_q1", "pay_q3", "pay_d9",
-                                           "pay_mean",
-                                           "bonus_perc", "supplements_perc", "compensation_perc",
-                                           "hours_per_month"))
+                             col_names = c("isco4_full", colnames_monthly_pay_noyoy))
     dt$file <- x
 
     return(dt)
   })
 
   ispv_all <- do.call(rbind, ispv_all_list)
+  ispv_all <- add_metadata_general(ispv_all)
+  ispv_all <- add_metadata_reg(ispv_all)
 
-  kraj_id_pattern <- paste(paste0(kraje$kraj_id_ispv, "_"), collapse = "|")
-
-  ispv_all$sfera <- regmatches(ispv_all$file, regexpr("mzs|pls", ispv_all$file))
-  ispv_all$kraj_id_ispv <- regmatches(ispv_all$file, regexpr(kraj_id_pattern,
-                                                             ispv_all$file))
-  ispv_all$kraj_id_ispv <- substr(ispv_all$kraj_id_ispv, 1, 3)
-  ispv_all$period <- regmatches(ispv_all$file, regexpr("2[0-9]4", ispv_all$file))
-  ispv_all$year <- paste0("20", substr(ispv_all$period, 1, 2))
   ispv_all$isco4_id <- substr(ispv_all$isco4_full, 1, 4)
   ispv_all$isco4_name <- substr(ispv_all$isco4_full, 6, length(ispv_all$isco4_full))
 
-  ispv_all <- merge(ispv_all, kraje, by = "kraj_id_ispv")
   ispv_all <- tibble::as_tibble(ispv_all)
-
   return(ispv_all)
 }
 

@@ -23,3 +23,38 @@ kraje$kraj_name <- stringi::stri_unescape_unicode(kraje$kraj_name)
 
 
 kraj_id_pattern <- paste(paste0(kraje$kraj_id_ispv, "_"), collapse = "|")
+
+add_metadata_reg <- function(ispv_all) {
+
+  ispv_all$kraj_id_ispv <- regmatches(ispv_all$file, regexpr(kraj_id_pattern,
+                                                             ispv_all$file))
+  ispv_all$kraj_id_ispv <- substr(ispv_all$kraj_id_ispv, 1, 3)
+  ispv_all <- merge(ispv_all, kraje, by = "kraj_id_ispv")
+
+  return(ispv_all)
+}
+
+add_metadata_general <- function(ispv_all) {
+
+  ispv_all$sfera <- regmatches(ispv_all$file, regexpr("mzs|pls", ispv_all$file, ignore.case = T))
+  ispv_all$period <- regmatches(ispv_all$file, regexpr("2[0-9]4", ispv_all$file))
+  ispv_all$year <- paste0("20", substr(ispv_all$period, 1, 2))
+
+  return(ispv_all)
+}
+
+colnames_monthly_pay_noyoy <- c("fte_thous", "pay_median",
+                         "pay_d1", "pay_q1", "pay_q3", "pay_d9",
+                         "pay_mean",
+                         "bonus_perc", "supplements_perc", "compensation_perc",
+                         "hours_per_month")
+colnames_monthly_pay_withmedianyoy <- c("fte_thous", "pay_median", "pay_median_yoy",
+                         "pay_d1", "pay_q1", "pay_q3", "pay_d9",
+                         "pay_mean",
+                         "bonus_perc", "supplements_perc", "compensation_perc",
+                         "hours_per_month")
+colnames_monthly_pay_withmeanyoy <- c("fte_thous", "pay_median", "pay_median_yoy",
+                         "pay_d1", "pay_q1", "pay_q3", "pay_d9",
+                         "pay_mean", "pay_mean_yoy",
+                         "bonus_perc", "supplements_perc", "compensation_perc",
+                         "hours_per_month")
