@@ -1,1 +1,1 @@
-utils::globalVariables(c("kraje"))
+# utils::globalVariables(c("kraje"))

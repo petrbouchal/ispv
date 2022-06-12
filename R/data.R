@@ -1,7 +1,7 @@
 
 #' Codelist (registry) of regions
 #'
-#' Used in `pv_load_kraje()` to add proper region IDs and names.
+#' Used in `pv_reg_*()` to add proper region IDs and names.
 #'
 #' @format A data frame with 14 rows and 4 variables:
 #' \describe{
