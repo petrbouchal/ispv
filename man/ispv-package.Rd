@@ -12,6 +12,7 @@ Retrieve and load data from the Czech Information System on Average Earnings (IS
 Useful links:
 \itemize{
   \item \url{https://github.com/petrbouchal/ispv}
+  \item \url{http://petrbouchal.xyz/ispv/}
   \item Report bugs at \url{https://github.com/petrbouchal/ispv/issues}
 }
 

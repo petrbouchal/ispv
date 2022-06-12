@@ -48,7 +48,7 @@ links <- pv_list_reg(2020)
 paths <- file.path(getwd(), links$name[c(1, 2, 15, 16)])
 purrr::walk2(links$url[c(1, 2, 15, 16)], paths, curl::curl_download)
 
-data <- pv_load_reg(paths)
+data <- pv_reg_monthlypay_isco4(paths)
 
 data
 ```

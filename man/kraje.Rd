@@ -17,6 +17,6 @@ A data frame with 14 rows and 4 variables:
 kraje
 }
 \description{
-Used in \code{pv_load_kraje()} to add proper region IDs and names.
+Used in \verb{pv_reg_*()} to add proper region IDs and names.
 }
 \keyword{datasets}

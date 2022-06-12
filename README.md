@@ -34,40 +34,29 @@ library(ispv)
 links <- pv_list_reg(2020)
 
 paths <- file.path(getwd(), links$name[c(1, 2, 15, 16)])
-purrr::map2(links$url[c(1, 2, 15, 16)], paths, curl::curl_download)
-#> [[1]]
-#> [1] "/Users/petr/csandbox/ispv/Pra_204_mzs.xlsx"
-#> 
-#> [[2]]
-#> [1] "/Users/petr/csandbox/ispv/Str_204_mzs.xlsx"
-#> 
-#> [[3]]
-#> [1] "/Users/petr/csandbox/ispv/Pra_204_pls.xlsx"
-#> 
-#> [[4]]
-#> [1] "/Users/petr/csandbox/ispv/Str_204_pls.xlsx"
+purrr::walk2(links$url[c(1, 2, 15, 16)], paths, curl::curl_download)
 
-data <- pv_load_reg(paths)
+data <- pv_reg_monthlypay_isco4(paths)
 
 data
 #> # A tibble: 545 × 22
-#>    kraj_id_ispv file        isco4_full fte_thous pay_median pay_d1 pay_q1 pay_q3
-#>    <chr>        <chr>       <chr>          <dbl>      <dbl>  <dbl>  <dbl>  <dbl>
-#>  1 Pra          /Users/pet… 1120 Nejv…     1.25     147534. 39480. 66898. 3.04e5
-#>  2 Pra          /Users/pet… 1211 Řídí…     2.84     100871. 44964. 68750. 1.59e5
-#>  3 Pra          /Users/pet… 1212 Řídí…     0.900    100313. 45651. 64583. 1.66e5
-#>  4 Pra          /Users/pet… 1219 Osta…     1.62      76178. 31050. 49090. 1.31e5
-#>  5 Pra          /Users/pet… 1221 Řídí…     4.88      91330. 38618. 56198. 1.47e5
-#>  6 Pra          /Users/pet… 1223 Řídí…     0.989     99731. 45760. 67100. 1.43e5
-#>  7 Pra          /Users/pet… 1321 Řídí…     1.44      67123. 20246. 44127. 1.12e5
-#>  8 Pra          /Users/pet… 1323 Řídí…     2.07      75469. 31909. 49077. 1.04e5
-#>  9 Pra          /Users/pet… 1324 Řídí…     2.40      72326. 35602. 48826. 1.10e5
-#> 10 Pra          /Users/pet… 1330 Řídí…     2.81     115329. 52052. 73825. 1.62e5
-#> # … with 535 more rows, and 14 more variables: pay_d9 <dbl>, pay_mean <dbl>,
+#>    kraj_id_ispv isco4_full      fte_thous pay_median pay_d1 pay_q1 pay_q3 pay_d9
+#>    <chr>        <chr>               <dbl>      <dbl>  <dbl>  <dbl>  <dbl>  <dbl>
+#>  1 Pra          1120 Nejvyšší …     1.25     147534. 39480. 66898. 3.04e5 4.48e5
+#>  2 Pra          1211 Řídící pr…     2.84     100871. 44964. 68750. 1.59e5 2.20e5
+#>  3 Pra          1212 Řídící pr…     0.900    100313. 45651. 64583. 1.66e5 2.37e5
+#>  4 Pra          1219 Ostatní ř…     1.62      76178. 31050. 49090. 1.31e5 1.86e5
+#>  5 Pra          1221 Řídící pr…     4.88      91330. 38618. 56198. 1.47e5 2.35e5
+#>  6 Pra          1223 Řídící pr…     0.989     99731. 45760. 67100. 1.43e5 2.04e5
+#>  7 Pra          1321 Řídící pr…     1.44      67123. 20246. 44127. 1.12e5 1.57e5
+#>  8 Pra          1323 Řídící pr…     2.07      75469. 31909. 49077. 1.04e5 1.38e5
+#>  9 Pra          1324 Řídící pr…     2.40      72326. 35602. 48826. 1.10e5 1.54e5
+#> 10 Pra          1330 Řídící pr…     2.81     115329. 52052. 73825. 1.62e5 2.29e5
+#> # … with 535 more rows, and 14 more variables: pay_mean <dbl>,
 #> #   bonus_perc <dbl>, supplements_perc <dbl>, compensation_perc <dbl>,
-#> #   hours_per_month <dbl>, sfera <chr>, period <chr>, year <chr>,
-#> #   isco4_id <chr>, isco4_name <chr>, kraj_id <chr>, kraj_name <chr>,
-#> #   kraj_id_nuts3 <chr>
+#> #   hours_per_month <dbl>, file <chr>, sfera <chr>, period <chr>, year <chr>,
+#> #   kraj_id <chr>, kraj_name <chr>, kraj_id_nuts3 <chr>, isco4_id <chr>,
+#> #   isco4_name <chr>
 ```
 
 This is a long format data frame, so is easy to analyse and visualise:

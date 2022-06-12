@@ -14,7 +14,31 @@ Two types of data
 - national
 - regional
 
-Two steps in basic workflow
+Three types of information
+
+- time worked
+- pay
+- hourly earnings
+
+## Breakdowns
+
+### Regional
+
+#### Pay:
+
+- ISCO-2: sheet 3
+- ISCO-4: sheet 4
+- gender: sheet 2 top (crossed with age)
+- age: sheet 2 top (crossed with gender)
+- education: sheet 2 bottom
+- none: sheet 1
+
+## National
+
+- ISCO4: M8r files - more detailed ISCO than in general file
+
+
+## Two steps in basic workflow
 
 - get links
 - [download data]
