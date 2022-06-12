@@ -18,4 +18,4 @@ kraje <- tibble::tribble(
 
 kraje$kraj_name <- stringi::stri_unescape_unicode(kraje$kraj_name)
 
-usethis::use_data(kraje, overwrite = TRUE)
+usethis::use_data(kraje, overwrite = TRUE, internal = TRUE)
