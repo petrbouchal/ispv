@@ -67,6 +67,7 @@ pv_cr_monthlypay_isco <- function(path, sheet = 1) {
     dt$file <- x
 
     dt[, 2:12] <- suppressWarnings(sapply(dt[,2:12], as.numeric))
+    if(! "estimate_quality" %in% names(dt)) dt$estimate_quality <- NA
 
     return(dt)
   })
