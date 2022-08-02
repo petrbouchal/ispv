@@ -62,8 +62,6 @@ pv_cr_monthlypay_isco <- function(path, sheet = 1) {
       col_names_final <- c("isco_full", colnames_monthly_pay_noyoy, "estimate_quality")
     }
 
-    print(col_names_final)
-
     dt <- readxl::read_excel(x, sheet = sheet, skip = 9,
                              col_names = col_names_final)
     dt$file <- x
