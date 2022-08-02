@@ -99,7 +99,7 @@ pv_get_links <- function(page_html, url, regional = FALSE) {
 
   ispv_links_tbl$krajsky <- grepl(kraj_id_pattern, ispv_links_tbl$name)
   ispv_links_tbl$url_page <- url
-  ispv_links$period <- regmatches(ispv_links$name, regexpr("2[0-9]4", ispv_links$name))
+  ispv_links$period <- regmatches(ispv_links$name, regexpr("2[0-9][2,4]", ispv_links$name))
   ispv_links$year <- paste0("20", substr(ispv_links$period, 1, 2))
 
   ispv_links_tbl$url <- paste0(url_base, ispv_links_tbl$url)
