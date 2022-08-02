@@ -6,7 +6,7 @@
 \alias{ispv-package}
 \title{ispv: Use Czech labour market survey data}
 \description{
-Retrieve and load data from the Czech Information System on Average Earnings (ISPV) at <https://www.ispv.cz>.
+Retrieve and load data from the Czech Information System on Average Earnings (ISPV) at \url{https://www.ispv.cz}.
 }
 \seealso{
 Useful links:
