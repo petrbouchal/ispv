@@ -37,7 +37,7 @@ add_metadata_reg <- function(ispv_all) {
 add_metadata_general <- function(ispv_all) {
 
   ispv_all$sfera <- regmatches(ispv_all$file, regexpr("mzs|pls", ispv_all$file, ignore.case = T))
-  ispv_all$period <- regmatches(ispv_all$file, regexpr("2[0-9]4", ispv_all$file))
+  ispv_all$period <- regmatches(ispv_all$file, regexpr("2[0-9][2,4]", ispv_all$file))
   ispv_all$year <- paste0("20", substr(ispv_all$period, 1, 2))
 
   return(ispv_all)
