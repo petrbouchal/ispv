@@ -56,7 +56,7 @@ pv_cr_monthlypay_isco <- function(path, sheet = 1) {
 
   ispv_all_list <- purrr::map(path, function(x) {
 
-    if (grepl("_PLS", path, ignore.case = T)) {
+    if (grepl("_PLS", x, ignore.case = T)) {
       col_names_final <- c("isco_full", colnames_monthly_pay_noyoy)
     }  else {
       col_names_final <- c("isco_full", colnames_monthly_pay_noyoy, "estimate_quality")
