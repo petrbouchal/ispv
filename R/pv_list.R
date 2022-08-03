@@ -6,7 +6,7 @@
 #' regional data and returns the result in a tibble.
 #'
 #' @param year Year, defaults to scraping page for latest available data. String or numeric in YYYY format of length >= 1.
-#' @param base_url base url, defaults to [htps://ispv.cz](htps://ispv.cz)
+#' @param base_url base url, defaults to [https://ispv.cz](https://ispv.cz)
 #' @param user_agent User agent string, defaults to package URL on Github (`r user_agent_default`).
 #'
 #' @return a tibble with file name, URL and year. File name can be used to determine the time period and region.
@@ -36,7 +36,7 @@ pv_list_reg <- function(year = NULL, base_url = NULL, user_agent = NULL) {
 #' national data and returns the result in a tibble.
 #'
 #' @param year Year, defaults to scraping page for latest available data. String or numeric in YYYY format of length >= 1
-#' @param base_url base url, defaults to [htps://ispv.cz](htps://ispv.cz)
+#' @param base_url base url, defaults to [https://ispv.cz](https://ispv.cz)
 #' @param user_agent User agent string, defaults to package URL on Github (`r user_agent_default`).
 #'
 #' @return a tibble with file name, URL and year. File name can be used to determine the time period and region.
