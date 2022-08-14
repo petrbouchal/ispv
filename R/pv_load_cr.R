@@ -38,7 +38,7 @@ pv_cr_monthlypay_age_gender <- function(path) {
 
 #' Load country-wide data by ISCO
 #'
-#' Load country-wide data by ISCO
+#' Load country-wide data by ISCO  (profession classification) at 4 and 5 digits
 #'
 #' @param path path to one or more Excel files (character vector length one or more). Will be file with "CR_" and either "PLS" or "MZS" in the name
 #' @param sheet which sheet to open. Will be 1 in files with only one sheet ("CR_204_MZS_M8r.xlsx")
@@ -92,3 +92,37 @@ pv_cr_monthlypay_isco <- function(path, sheet = 1) {
   return(ispv_all)
 }
 
+
+#' Load country-wide data by NACE
+#'
+#' Load country-wide data by NACE (single-letter industry codes)
+#'
+#' @param path path to file, filename should be in the form e.g. CR_YYQ_MZS.xlsx".
+#' @param sheet Sheet number, defaults to 5
+#'
+#' @return a tibble
+#' @examples
+#' pv_cr_monthlypay_nace(system.file("extdata", "CR_204_MZS.xlsx", package = "ispv"))
+#' pv_cr_monthlypay_nace(system.file("extdata", "CR_204_PLS.xlsx", package = "ispv"))
+#' @export
+pv_cr_monthlypay_nace <- function(path, sheet = 5) {
+  names(path) <- path
+
+  ispv_all_list <- purrr::map(path, function(x) {
+    col_names_final <- c("nace_id", "nace_nazev", colnames_monthly_pay_withmeanyoy)
+    dt <- readxl::read_excel(x, sheet = sheet, skip = 25,
+                             col_names = col_names_final)
+    dt$file <- x
+    dt[, 3:15] <- suppressWarnings(sapply(dt[,3:15], as.numeric))
+    return(dt)
+  })
+
+  ispv_all <- do.call(rbind, ispv_all_list)
+
+  ispv_all <- add_metadata_general(ispv_all)
+
+  ispv_all <- tibble::as_tibble(ispv_all)
+  ispv_all <- ispv_all[!grepl("^CELKEM", ispv_all$nace_id),]
+
+  return(ispv_all)
+}

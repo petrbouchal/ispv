@@ -8,7 +8,7 @@ Description: Retrieve and load data from the Czech Information System on Average
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1
 Imports: 
     cli,
     httr,

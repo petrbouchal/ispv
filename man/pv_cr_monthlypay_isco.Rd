@@ -16,7 +16,7 @@ and 7 in comprehensive file ("CR_204_MZS.xlsx")}
 a tibble
 }
 \description{
-Load country-wide data by ISCO
+Load country-wide data by ISCO  (profession classification) at 4 and 5 digits
 }
 \examples{
 pv_cr_monthlypay_isco(system.file("extdata", "CR_204_MZS_M8r.xlsx", package = "ispv"), 1)
