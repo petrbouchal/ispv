@@ -28,6 +28,9 @@
     <loc>http://petrbouchal.xyz/ispv/reference/kraje.html</loc>
   </url>
   <url>
+    <loc>http://petrbouchal.xyz/ispv/reference/pv_cr_monthlypay_age_gender.html</loc>
+  </url>
+  <url>
     <loc>http://petrbouchal.xyz/ispv/reference/pv_cr_monthlypay_isco.html</loc>
   </url>
   <url>
@@ -38,6 +41,12 @@
   </url>
   <url>
     <loc>http://petrbouchal.xyz/ispv/reference/pv_list_reg.html</loc>
+  </url>
+  <url>
+    <loc>http://petrbouchal.xyz/ispv/reference/pv_reg_monthlypay_age_gender.html</loc>
+  </url>
+  <url>
+    <loc>http://petrbouchal.xyz/ispv/reference/pv_reg_monthlypay_education.html</loc>
   </url>
   <url>
     <loc>http://petrbouchal.xyz/ispv/reference/pv_reg_monthlypay_isco4.html</loc>
