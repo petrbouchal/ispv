@@ -106,7 +106,7 @@ pv_reg_monthlypay_age_gender <- function(path, sheet = 2) {
 
 #' Load regional data on monthly earnings by education
 #'
-#' Loads data on monthly earnings by ISCO code from one or more local Excel files downloaded from ISPV links retrieved by `pv_list_reg()`.
+#' Loads data on monthly earnings by education level from one or more local Excel files downloaded from ISPV links retrieved by `pv_list_reg()`.
 #'
 #' @inheritParams pv_reg_monthlypay_isco4
 #' @param sheet sheet number; you should be able to leave this as default (2) if using files downloaded from ISPV

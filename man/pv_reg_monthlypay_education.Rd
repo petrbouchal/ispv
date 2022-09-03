@@ -15,7 +15,7 @@ pv_reg_monthlypay_education(path, sheet = 2)
 a tibble
 }
 \description{
-Loads data on monthly earnings by ISCO code from one or more local Excel files downloaded from ISPV links retrieved by \code{pv_list_reg()}.
+Loads data on monthly earnings by education level from one or more local Excel files downloaded from ISPV links retrieved by \code{pv_list_reg()}.
 }
 \examples{
 pv_reg_monthlypay_education(system.file("extdata", "Kar_204_pls.xlsx", package = "ispv"))

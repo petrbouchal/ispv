@@ -129,3 +129,43 @@ pv_cr_monthlypay_nace <- function(path, sheet = 5) {
 
   return(ispv_all)
 }
+
+#' Load country-wide data on monthly earnings by education
+#'
+#' Loads data on monthly earnings by education level from one or more local Excel files downloaded from ISPV links retrieved by `pv_list_reg()`.
+#'
+#' @inheritParams pv_cr_monthlypay_isco
+#' @param sheet sheet number; you should be able to leave this as default (3) if using files downloaded from ISPV
+#'
+#' @return a tibble
+#' @examples
+#' pv_cr_monthlypay_education(system.file("extdata", "CR_204_PLS.xlsx", package = "ispv"))
+#' pv_cr_monthlypay_education(system.file("extdata", "CR_204_MZS.xlsx", package = "ispv"))
+#' @export
+pv_cr_monthlypay_education <- function(path, sheet = 3) {
+
+  names(path) <- path
+
+  ispv_all_list <- purrr::map(path, function(x) {
+
+    dt <- readxl::read_excel(x, sheet = sheet,
+                             # skip = 9, n_max = 15-9,
+                             range = "A9:P15",
+                             col_names = c("category", "blank1", "code",
+                                           colnames_monthly_pay_withmeanyoy))
+    dt$file <- x
+    dt <- dt[!is.na(dt$category),]
+    dt$blank1 <- NULL
+
+    dt[,3:14] <- suppressWarnings(sapply(dt[,3:14], as.numeric))
+
+    return(dt)
+  })
+
+  ispv_all <- do.call(rbind, ispv_all_list)
+  ispv_all <- add_metadata_general(ispv_all)
+  ispv_all <- tibble::as_tibble(ispv_all)
+
+  return(ispv_all)
+}
+
