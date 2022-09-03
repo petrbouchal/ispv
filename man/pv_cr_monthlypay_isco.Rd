@@ -7,9 +7,9 @@
 pv_cr_monthlypay_isco(path, sheet = 1)
 }
 \arguments{
-\item{path}{path to one or more Excel files (character vector length one or more). Will be file with "CR_" and either "PLS" or "MZS" in the name}
+\item{path}{path(s) to file(s), Will be file with "CR_{YYQ}D and either "PLS" or "MZS" in the name.}
 
-\item{sheet}{which sheet to open. Will be 1 in files with only one sheet ("CR_204_MZS_M8r.xlsx")
+\item{sheet}{which sheet to open. Will be 1 (the default) in files with only one sheet ("CR_204_MZS_M8r.xlsx")
 and 7 in comprehensive file ("CR_204_MZS.xlsx")}
 }
 \value{

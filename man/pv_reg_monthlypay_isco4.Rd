@@ -2,7 +2,7 @@
 % Please edit documentation in R/pv_load_reg.R
 \name{pv_reg_monthlypay_isco4}
 \alias{pv_reg_monthlypay_isco4}
-\title{Load ISPV Excel files with regional data on monthly earnings by ISCO code}
+\title{Load regional data on monthly earnings by profession}
 \format{
 The function returns a data frame with 22 variables.
 All earnings are monthly gross in CZK.
@@ -32,10 +32,12 @@ All earnings are monthly gross in CZK.
 }
 }
 \usage{
-pv_reg_monthlypay_isco4(path)
+pv_reg_monthlypay_isco4(path, sheet = 4)
 }
 \arguments{
-\item{path}{path to one or more Excel files (character vector length one or more).}
+\item{path}{path(s) to file(s), Will be file with "{Reg}_{YYQ}" and either "PLS" or "MZS" in the name.}
+
+\item{sheet}{sheet number; you should be able to leave this as default (4) if using files downloaded from ISPV}
 }
 \value{
 a tibble, see Format for details.
@@ -44,5 +46,6 @@ a tibble, see Format for details.
 Loads data on monthly earnings by ISCO code from one or more local Excel files downloaded from ISPV links retrieved by \code{pv_list_reg()}.
 }
 \examples{
+pv_reg_monthlypay_isco4(system.file("extdata", "Kar_204_mzs.xlsx", package = "ispv"))
 pv_reg_monthlypay_isco4(system.file("extdata", "Kar_204_pls.xlsx", package = "ispv"))
 }

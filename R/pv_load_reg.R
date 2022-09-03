@@ -1,9 +1,10 @@
 
-#' Load ISPV Excel files with regional data on monthly earnings by ISCO code
+#' Load regional data on monthly earnings by profession
 #'
 #' Loads data on monthly earnings by ISCO code from one or more local Excel files downloaded from ISPV links retrieved by `pv_list_reg()`.
 #'
-#' @param path path to one or more Excel files (character vector length one or more).
+#' @param path path(s) to file(s), Will be file with "{Reg}_{YYQ}" and either "PLS" or "MZS" in the name.
+#' @param sheet sheet number; you should be able to leave this as default (4) if using files downloaded from ISPV
 #'
 #' @return a tibble, see Format for details.
 #'
@@ -36,14 +37,15 @@
 #'
 #' @export
 #' @examples
+#' pv_reg_monthlypay_isco4(system.file("extdata", "Kar_204_mzs.xlsx", package = "ispv"))
 #' pv_reg_monthlypay_isco4(system.file("extdata", "Kar_204_pls.xlsx", package = "ispv"))
-pv_reg_monthlypay_isco4 <- function(path) {
+pv_reg_monthlypay_isco4 <- function(path, sheet = 4) {
 
   names(path) <- path
 
   ispv_all_list <- purrr::map(path, function(x) {
 
-    dt <- readxl::read_excel(x, sheet = 4, skip = 11,
+    dt <- readxl::read_excel(x, sheet = sheet, skip = 11,
                              col_names = c("isco4_full", colnames_monthly_pay_noyoy))
     dt$file <- x
 
@@ -61,13 +63,25 @@ pv_reg_monthlypay_isco4 <- function(path) {
   return(ispv_all)
 }
 
-pv_reg_monthlypay_age_gender <- function(path) {
+
+#' Load regional data on monthly earnings by profession
+#'
+#' Load ISPV Excel files with regional data on monthly earnings by ISCO code
+#'
+#' @inheritParams pv_reg_monthlypay_isco4
+#' @param sheet sheet number; you should be able to leave this as default (2) if using files downloaded from ISPV
+#' @return a tibble
+#' @examples
+#' pv_reg_monthlypay_age_gender(system.file("extdata", "Kar_204_pls.xlsx", package = "ispv"))
+#' pv_reg_monthlypay_age_gender(system.file("extdata", "Kar_204_mzs.xlsx", package = "ispv"))
+#' @export
+pv_reg_monthlypay_age_gender <- function(path, sheet = 2) {
 
   names(path) <- path
 
   ispv_all_list <- purrr::map(path, function(x) {
 
-    dt <- readxl::read_excel(x, sheet = 2, skip = 11, n_max = 34-11,
+    dt <- readxl::read_excel(x, sheet = sheet, skip = 11, n_max = 34-11,
                              col_names = c("category", "blank1", "blank2",
                                            colnames_monthly_pay_withmedianyoy))
     dt$file <- x
@@ -77,6 +91,45 @@ pv_reg_monthlypay_age_gender <- function(path) {
     dt$group <- c(rep("All", 7), rep("Male", 7), rep("Female", 7))
 
     dt[,3:13] <- suppressWarnings(sapply(dt[,3:13], as.numeric))
+
+    return(dt)
+  })
+
+  ispv_all <- do.call(rbind, ispv_all_list)
+  ispv_all <- add_metadata_general(ispv_all)
+  ispv_all <- add_metadata_reg(ispv_all)
+  ispv_all <- tibble::as_tibble(ispv_all)
+
+  return(ispv_all)
+}
+
+
+#' Load regional data on monthly earnings by education
+#'
+#' Loads data on monthly earnings by ISCO code from one or more local Excel files downloaded from ISPV links retrieved by `pv_list_reg()`.
+#'
+#' @inheritParams pv_reg_monthlypay_isco4
+#' @param sheet sheet number; you should be able to leave this as default (2) if using files downloaded from ISPV
+#'
+#' @return a tibble
+#' @examples
+#' pv_reg_monthlypay_education(system.file("extdata", "Kar_204_pls.xlsx", package = "ispv"))
+#' pv_reg_monthlypay_education(system.file("extdata", "Kar_204_mzs.xlsx", package = "ispv"))
+#' @export
+pv_reg_monthlypay_education <- function(path, sheet = 2) {
+
+  names(path) <- path
+
+  ispv_all_list <- purrr::map(path, function(x) {
+
+    dt <- readxl::read_excel(x, sheet = sheet, skip = 46, n_max = 53-46,
+                             col_names = c("category", "blank1", "code",
+                                           colnames_monthly_pay_withmedianyoy))
+    dt$file <- x
+    dt <- dt[!is.na(dt$category),]
+    dt$blank1 <- NULL
+
+    dt[,3:14] <- suppressWarnings(sapply(dt[,3:14], as.numeric))
 
     return(dt)
   })

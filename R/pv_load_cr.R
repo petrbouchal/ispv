@@ -1,14 +1,17 @@
 
-#' FUNCTION_TITLE
+#' Load country-wide data by gender and age
 #'
-#' FUNCTION_DESCRIPTION
+#' Load country-wide data by gender and age (age in 6 bins)
 #'
-#' @param path path to one or more Excel files (character vector length one or more)
+#' @param path path(s) to file(s), Will be file with "CR_{YYQ}D and either "PLS" or "MZS" in the name.
+#' @param sheet sheet number; you should be able to leave this as default (2) if using files downloaded from ISPV
 #'
 #' @return a tibble
 #' @examples
-#' # ADD_EXAMPLES_HERE
-pv_cr_monthlypay_age_gender <- function(path) {
+#' pv_cr_monthlypay_age_gender(system.file("extdata", "CR_204_MZS.xlsx", package = "ispv"))
+#' pv_cr_monthlypay_age_gender(system.file("extdata", "CR_204_PLS.xlsx", package = "ispv"))
+#' @export
+pv_cr_monthlypay_age_gender <- function(path, sheet = 2) {
 
   names(path) <- path
 
@@ -40,8 +43,8 @@ pv_cr_monthlypay_age_gender <- function(path) {
 #'
 #' Load country-wide data by ISCO  (profession classification) at 4 and 5 digits
 #'
-#' @param path path to one or more Excel files (character vector length one or more). Will be file with "CR_" and either "PLS" or "MZS" in the name
-#' @param sheet which sheet to open. Will be 1 in files with only one sheet ("CR_204_MZS_M8r.xlsx")
+#' @inheritParams pv_cr_monthlypay_age_gender
+#' @param sheet which sheet to open. Will be 1 (the default) in files with only one sheet ("CR_204_MZS_M8r.xlsx")
 #' and 7 in comprehensive file ("CR_204_MZS.xlsx")
 #'
 #' @return a tibble
@@ -97,8 +100,8 @@ pv_cr_monthlypay_isco <- function(path, sheet = 1) {
 #'
 #' Load country-wide data by NACE (single-letter industry codes)
 #'
-#' @param path path to file, filename should be in the form e.g. CR_YYQ_MZS.xlsx".
-#' @param sheet Sheet number, defaults to 5
+#' @inheritParams pv_cr_monthlypay_age_gender
+#' @param sheet sheet number; you should be able to leave this as default (5) if using files downloaded from ISPV
 #'
 #' @return a tibble
 #' @examples

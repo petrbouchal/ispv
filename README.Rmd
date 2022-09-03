@@ -93,10 +93,11 @@ The data items are documented in the relevant data loading functions, i.e. curre
  
 ## Limitations of the package
  
-The source data contains multiple breakdowns and other types of information. Currently, the package only supports loading the pay-and-headcount table with the ISCO-4 job classification breakdown. 
+The source data contains multiple breakdowns and other types of information. 
+Currently, the package only supports loading the pay-and-headcount tables for certain breakdowns (notably ISCO and NACE as well as gender and age, and education levels).
 
 ## Credits
 
-The data is collected and managed by Trexima on behalf of the Czech Ministry of Labour and Social Affairs. 
+The data is collected and managed by Trexima on behalf of the Czech Ministry of Labour and Social Affairs.
 
 This package is not affiliated with or endorsed by the ministry, but they deserve credit for commissioning the data collection and maintenance.

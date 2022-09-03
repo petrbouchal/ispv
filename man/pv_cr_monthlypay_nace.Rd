@@ -7,9 +7,9 @@
 pv_cr_monthlypay_nace(path, sheet = 5)
 }
 \arguments{
-\item{path}{path to file, filename should be in the form e.g. CR_YYQ_MZS.xlsx".}
+\item{path}{path(s) to file(s), Will be file with "CR_{YYQ}D and either "PLS" or "MZS" in the name.}
 
-\item{sheet}{Sheet number, defaults to 5}
+\item{sheet}{sheet number; you should be able to leave this as default (5) if using files downloaded from ISPV}
 }
 \value{
 a tibble
