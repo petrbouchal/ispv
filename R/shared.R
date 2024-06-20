@@ -1,4 +1,4 @@
-url_base <- "https://ispv.cz/"
+url_base <- "https://www.ispv.cz/"
 user_agent_default <- "https://github.com/petrbouchal/ispv"
 
 kraje <- tibble::tribble(
